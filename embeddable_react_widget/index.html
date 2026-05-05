@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Agent Widget Test</title>
+  </head>
+  <body style="width: 100%">
+    <!-- Load your widget script from CloudFront -->
+    <script src="https://backend.net/widget.js" defer></script>
+
+    <!-- Initialize the widget -->
+    <script>
+      // Wait until the widget bundle has loaded
+      window.addEventListener("load", () => {
+        if (window.MyWidget && typeof window.MyWidget.init === "function") {
+          window.MyWidget.init({
+            props: { publicKey: "a public key goes here" },
+          });
+        } else {
+          console.error("Widget not loaded or init() not available!");
+        }
+      });
+    </script>
+  </body>
+</html>
