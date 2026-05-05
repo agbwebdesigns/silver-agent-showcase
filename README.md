@@ -24,7 +24,7 @@ I designed and built the platform as the technical founder, including:
 - Weaviate vector storage
 - DocumentDB analytics planning
 - AWS/CloudFront distribution
-- WordPress plugin integration
+- Deployment and Containerization
 - Compliance-aware prompt design
 
 ## Tech Stack
