@@ -52,7 +52,7 @@ I designed and built the platform as the technical founder, including:
 
 ## Architecture
 
-Include diagram here.
+<img width="2459" height="1389" alt="mermaid-diagram" src="https://github.com/user-attachments/assets/04cd25e5-a850-4489-af31-154739d2bc59" />
 
 ## Selected Code Samples
 
