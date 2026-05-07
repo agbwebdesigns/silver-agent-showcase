@@ -47,7 +47,7 @@ I designed and built the platform as the technical founder, including:
 - General Medicare Q&A
 - Conversation memory
 - Analytics/reporting design
-- WordPress plugin for easier installation
+- Dockerized container for deployment
 - Compliance-aware response guardrails
 
 ## Architecture
