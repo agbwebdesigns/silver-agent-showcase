@@ -8,8 +8,6 @@ The goal of this example is to show how Silver Agent can be distributed as a Saa
 
 ## What This Demonstrates
 
-This example shows:
-
 - How a lightweight script can embed a React application into a third-party website
 - How the widget creates its own DOM mount point
 - How the widget reads customer configuration, such as a public key
@@ -27,3 +25,27 @@ frontend/src/
   ChatBox.jsx
   rollup.widget.config.js
 ```
+
+## Design Notes
+
+### Customer-Friendly Installation
+
+The widget is designed so customers do not need to understand React, Node, or the backend architecture. They only need to add a small script snippet to their website.
+
+### Separation from the Customer Website
+
+The widget creates its own mount point and manages its own UI state. This keeps the integration lightweight and reduces the chance of interfering with the customer’s existing website structure.
+
+### Public Key Validation
+
+The public key is not a secret. It is used to identify the customer account and route requests to the correct backend configuration. Server-side validation is still required to prevent unauthorized or misconfigured usage.
+
+### API-Driven Chat
+
+The widget does not contain the AI logic itself. It sends user messages to the backend, where prompt construction, compliance rules, retrieval, memory, and response generation are handled.
+
+### Why This Matters
+
+This widget demonstrates more than a chat UI. It shows a product distribution model.
+
+Silver Agent is designed to be embedded into customer websites as a hosted SaaS tool. The embeddable widget allows one backend and one hosted frontend bundle to serve multiple customer sites while keeping customer installation simple.
