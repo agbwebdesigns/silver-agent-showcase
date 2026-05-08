@@ -23,8 +23,6 @@ const ChatBox = ({
       hasMounted.current = true;
       return;
     }
-
-    console.log("storage effect fired", { isStreaming, messages });
     if (!isStreaming && messages.length > 0) {
       sessionStorage.setItem("silverAgent_chatTurns", JSON.stringify(messages));
     }
