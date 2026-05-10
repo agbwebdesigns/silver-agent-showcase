@@ -12,7 +12,6 @@ export async function search(query, doc_id, res) {
         model: "text-embedding-3-small",
         input: text,
       });
-      console.log(`Response Embedding: ${typeof response.data[0].embedding}`);
       return response.data[0].embedding;
     } catch (error) {
       console.error("Error creating openai embedding.", error);
@@ -20,6 +19,7 @@ export async function search(query, doc_id, res) {
     }
   }
 
+  // --- 1. Get the embedding for the query ---
   let queryVector;
   try {
     queryVector = await getEmbedding(query);
@@ -28,6 +28,7 @@ export async function search(query, doc_id, res) {
     return res.status(500).send(error);
   }
 
+  // --- 2. Connect to Weaviate Cloud ---
   let client;
   try {
     client = await weaviate.connectToWeaviateCloud(weaviateUrl, {
@@ -38,9 +39,9 @@ export async function search(query, doc_id, res) {
     return res.status(500).send(error);
   }
 
+  // --- 3. Validate that Weaviate is ready  ---
   try {
     const clientReadiness = await client.isReady();
-    console.log(`The client is ready: ${clientReadiness}`); // Should return `true`
   } catch (error) {
     console.error(
       `Error while attempting to determine Weaviate client readiness, ${error}`,
@@ -48,6 +49,7 @@ export async function search(query, doc_id, res) {
     return res.status(500).send(error);
   }
 
+  // --- 3.5. Get the collection where the knowledgebase is stored and validate it before querying ---
   try {
     const scannedDocumentsCollection = client.collections.use("ScannedChunks");
 
