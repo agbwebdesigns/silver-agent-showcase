@@ -29,6 +29,7 @@ backend/src/utils/query/
     /memory
         getSummaries.js
         getTurns.js
+        turnSummarizer.js
     docAnalyzer.js
     search.js
 ```
